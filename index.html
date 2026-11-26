@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NSL Enterprises | Solar Care</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f1f6fc;color:#17304d}
+header{background:#073568;color:white;padding:22px;text-align:center}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.hero{background:linear-gradient(120deg,#073568,#087de0);color:white;text-align:center;padding:48px 18px}
+.hero h2{font-size:30px}
+.container{max-width:700px;margin:25px auto;padding:15px}
+.card{background:white;padding:22px;border-radius:15px;box-shadow:0 4px 20px #1233}
+h2{color:#07549b}
+label{display:block;font-weight:bold;margin:15px 0 7px}
+input,select,textarea{width:100%;padding:13px;border:1px solid #ccd9e8;border-radius:8px;font-size:16px}
+textarea{height:100px}
+button{background:#0873d1;color:white;border:0;padding:14px;border-radius:9px;width:100%;font-size:16px;font-weight:bold;margin-top:18px}
+footer{background:#073568;color:white;text-align:center;padding:22px}
+small{color:#64748b}
+</style>
+</head>
+<body>
+<header>
+<h1>NSL ENTERPRISES</h1>
+<p>Solar Service & Customer Care</p>
+</header>
+
+<section class="hero">
+<h2>Welcome to NSL Enterprises</h2>
+<p>Aapki Solar Problem, Hamari Zimmedari!</p>
+<p>Reliable Solar Service • Customer Support</p>
+</section>
+
+<div class="container">
+<div class="card">
+<h2>Register Your Complaint</h2>
+<form id="complaint">
+<label>Customer Name *</label>
+<input id="name" required placeholder="Apna naam likhein">
+
+<label>Mobile Number *</label>
+<input id="phone" required type="tel" placeholder="Mobile number">
+
+<label>Address *</label>
+<input id="address" required placeholder="Gaon / Shehar">
+
+<label>Solar Product</label>
+<select id="product">
+<option>Solar Panel</option>
+<option>Inverter</option>
+<option>Battery</option>
+<option>Wiring</option>
+<option>Other</option>
+</select>
+
+<label>Complaint Type</label>
+<select id="problem" multiple size="5">
+<option>Solar Panel Not Working</option>
+<option>Low Electricity Generation</option>
+<option>Inverter Problem</option>
+<option>Battery Problem</option>
+<option>Wiring Problem</option>
+<option>Installation Problem</option>
+<option>Cleaning / Maintenance</option>
+<option>Other</option>
+</select>
+<small>Multiple problems select karne ke liye mobile par options ko select karein.</small>
+
+<label>Complaint Details</label>
+<textarea id="details" placeholder="Apni problem detail mein likhein"></textarea>
+
+<button type="submit">Send Complaint on WhatsApp</button>
+</form>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h2>Our Services</h2>
+<p>✓ Solar Panel Service</p>
+<p>✓ Inverter & Battery Support</p>
+<p>✓ Solar Maintenance</p>
+<p>✓ Customer Complaint Assistance</p>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h2>NSL Enterprises</h2>
+<p>Hamari team aapki solar complaint solve karne ke liye taiyar hai.</p>
+</div>
+</div>
+
+<footer>
+© 2026 NSL Enterprises<br>
+Solar Service & Customer Care
+</footer>
+
+<script>
+const WHATSAPP_NUMBER="91XXXXXXXXXX";
+
+document.getElementById("complaint").addEventListener("submit",function(e){
+e.preventDefault();
+
+if(WHATSAPP_NUMBER.includes("X")){
+alert("Website owner ko apna WhatsApp number set karna hoga.");
+return;
+}
+
+const problems=[...document.getElementById("problem").selectedOptions].map(x=>x.value).join(", ");
+
+const msg=`NSL Enterprises Complaint
+Name: ${document.getElementById("name").value}
+Phone: ${document.getElementById("phone").value}
+Address: ${document.getElementById("address").value}
+Product: ${document.getElementById("product").value}
+Problems: ${problems}
+Details: ${document.getElementById("details").value}`;
+
+window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
+});
+</script>
+</body>
+</html>
